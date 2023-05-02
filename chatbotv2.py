@@ -49,8 +49,8 @@ class SistemaChatBot:
             self.mostra_menu()
             bot = self.escolhe_bot()
             if bot:
-                self.mostra_comandos_bot(bot)
                 while True:
+                    self.mostra_comandos_bot(bot)
                     self.le_envia_comando(bot)
             else:
                 print("Bot não encontrado, tente novamente.")
