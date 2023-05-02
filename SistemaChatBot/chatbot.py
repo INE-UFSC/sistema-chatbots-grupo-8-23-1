@@ -21,6 +21,9 @@ class SistemaChatBot:
             self.__bot = BotTriste(self.__nome, {})
         elif bot_num == 3:
             self.__bot = BotZangado(self.__nome, chifres)
+        else:
+            nome = input("Nome do Bot:")
+            self.__bot = Bot(nome, {})
         self.mostra_comandos_bot()
 
     def mostra_comandos_bot(self):
