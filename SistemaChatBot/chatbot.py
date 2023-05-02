@@ -1,27 +1,16 @@
 class SistemaChatBot:
     def __init__(self, lista_bots):
-        ##verificar se a lista de bots contém apenas bots
         self.__lista_bots = lista_bots
         self.__bot: Bot = None
-        self.__nome = "Os chifres fazem o homem, Yoda, ..."
 
     def escolhe_bot(self):
         print("Escolha um Bot: (1) Feliz, (2) Triste, (3) Zangado")
-        print(f"{self.__nome}")
-        chifres = {
-            4: f"Um homem sem chifres é um animal indefeso",
-            5: f"Pode te defender...",
-            6: f"O que separa os homens dos meninos é a quantidade de chifres",
-        }
         bot_num = int(input())
         self.__bot = self.__lista_bots[bot_num]
         self.mostra_comandos_bot()
 
     def mostra_comandos_bot(self):
-        print("1. Bom dia, como vai a sua tia?\n"
-              "2. Apresentações corníferas\n"
-              "3. Tchau")
-
+        self.__bot.mostra_comandos()
     def le_envia_comando(self, comando):
         self.__bot.executa_comando(comando)
 
@@ -65,6 +54,11 @@ class Bot:
 
     def generic_speech(self, string):
         print(f"{self.__nome}: {string}")
+        
+    def mostra_comandos(self):
+        print("1) Introducao\n2)Boas Vindas\n3)Despedida")
+        for n, commands in self.comandos:
+            print("{}")
 
 
 class BotFeliz(Bot):
