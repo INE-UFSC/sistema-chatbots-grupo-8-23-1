@@ -10,20 +10,11 @@ class SistemaChatBot:
         print(f"{self.__nome}")
         chifres = {
             4: f"Um homem sem chifres é um animal indefeso",
-            5: f"Somente um chifre pode te defender...",
+            5: f"Pode te defender...",
             6: f"O que separa os homens dos meninos é a quantidade de chifres",
-            7: "Você é muito corno..."
         }
         bot_num = int(input())
-        if bot_num == 1:
-            self.__bot = BotFeliz(self.__nome, {})
-        elif bot_num == 2:
-            self.__bot = BotTriste(self.__nome, {})
-        elif bot_num == 3:
-            self.__bot = BotZangado(self.__nome, chifres)
-        else:
-            nome = input("Nome do Bot:")
-            self.__bot = Bot(nome, {})
+        self.__bot = self.__lista_bots[bot_num]
         self.mostra_comandos_bot()
 
     def mostra_comandos_bot(self):
@@ -77,49 +68,49 @@ class Bot:
 
 
 class BotFeliz(Bot):
-    def __init__(self, nome, comandos):
-        super().__init__(nome, comandos)
+    def __init__(self, comandos):
+        super().__init__("Feliz", comandos)
 
     def apresentacao(self):
         super().apresentacao("Eu sou um Yoda Feliz")
 
     def boas_vindas(self):
-        super().boas_vindas("Sou Feliz seu corninho manso")
+        super().boas_vindas("Sou Feliz")
 
     def despedida(self):
-        super().despedida("Tchau corno!!!")
+        super().despedida("Tchau!!!")
 
 
 class BotTriste(Bot):
-    def __init__(self, nome, comandos):
-        super().__init__(nome, comandos)
+    def __init__(self, comandos):
+        super().__init__("Triste", comandos)
 
     def apresentacao(self):
         super().apresentacao("Eu sou um Yoda Bad Vibes")
 
     def boas_vindas(self):
-        super().boas_vindas("Sou corno seu corninho manso")
+        super().boas_vindas("Sou manso")
 
     def despedida(self):
-        super().despedida("Tchau corno triste!!!")
+        super().despedida("Tchau triste!!!")
 
 
 class BotZangado(Bot):
-    def __init__(self, nome, comandos):
-        super().__init__(nome, comandos)
+    def __init__(self, comandos):
+        super().__init__("Zangado", comandos)
 
     def apresentacao(self):
-        super().apresentacao("Vá à merda")
+        super().apresentacao("Ok")
 
     def boas_vindas(self):
         super().boas_vindas("Sua mãe precisa de receita pra fazer gelo")
 
     def despedida(self):
-        super().despedida("Sua mãe é tão velha tão velha que a certidão de nascimento passou da data de validade")
+        super().despedida("Passas-te da data de validade")
 
 
 def main():
-    novo = SistemaChatBot([])
+    novo = SistemaChatBot([BotFeliz({}), BotTriste({}), BotZangado({})])
     novo.inicio()
 
 
