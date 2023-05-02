@@ -6,7 +6,7 @@ class SistemaChatBot:
     def escolhe_bot(self):
         print("Escolha um Bot: (1) Feliz, (2) Triste, (3) Zangado")
         bot_num = int(input())
-        self.__bot = self.__lista_bots[bot_num]
+        self.__bot = self.__lista_bots[bot_num-1]
         self.mostra_comandos_bot()
 
     def mostra_comandos_bot(self):
